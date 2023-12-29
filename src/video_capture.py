@@ -28,6 +28,8 @@ def extract_frames_from_videos(video_paths, num_frames_per_video=300):
             if not ret:
                 break
             frames.append(frame)
+            if len(frames) % 10 == 0:
+                print(f"Processing frame {len(frames)} / {num_frames_per_video} from video: {video_path}")
             if len(frames) == num_frames_per_video:
                 break
 
@@ -48,7 +50,6 @@ def save_extracted_frames(frames_dict, base_save_path):
         os.makedirs(save_path, exist_ok=True)
 
         for i, frame in enumerate(frames):
-            frame_number = f'{i:02d}'  # Format the frame number to be two digits
+            frame_number = f'{i:03d}'  # Format the frame number to be three digits
             frame_path = os.path.join(save_path, f'frame_{frame_number}.jpg')
             cv2.imwrite(frame_path, frame)
-
