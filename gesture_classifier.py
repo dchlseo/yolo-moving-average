@@ -1,7 +1,8 @@
-from src.moving_average import MovingAverageFilter, class_inference_and_smoothing
 import os
 import re
+from src.moving_average import MovingAverageFilter, class_inference_and_smoothing
 from src.video_capture import extract_frames_from_videos, save_extracted_frames
+from src.inference_visualization import plot_timeseries, annotate_image, create_composite_image, plot_timeseries_per_frame, create_video_visualization
 from ultralytics import YOLO
 
 
@@ -66,4 +67,43 @@ else:
             cached_results[f'{os.path.basename(video_path)}_frame_{idx:03d}'] = result
 
 
-# Plotting results
+# # Plotting results
+# # Class labels and colors (modify as needed)
+# class_labels = {
+#     '0': 'Release',
+#     '1': 'Folding',
+#     '2': 'Grab',
+#     '-1': 'Undetected',
+#     'None': 'Uncertain'
+# }
+
+# class_colors = {
+#     'Release': (0, 255, 0),
+#     'Folding': (0, 165, 255),
+#     'Grab': (255, 0, 0),
+#     'Undetected': (0, 0, 255),
+#     'Uncertain': (255, 255, 0)
+# }
+
+# # Check if using saved frame images or direct frame data
+# using_saved_images = 'image_file_names' in locals()
+
+# if using_saved_images:
+#     # If using saved images, image_dir should point to the directory containing these images
+#     image_dir = output_dir
+# else:
+#     # If not using saved images, generate annotated images directly from frames
+#     for video_path, frames in frames_dict.items():
+#         for idx, frame in enumerate(frames):
+#             detection = cached_results[f'{os.path.basename(video_path)}_frame_{idx:03d}']
+#             annotated_image = annotate_image(frame, detection, class_labels, class_colors)
+#             frames_dict[video_path][idx] = annotated_image
+
+#     # Set image_dir to None as images are not read from a directory
+#     image_dir = None
+
+# # Determine the total number of frames
+# total_frames = len(cached_results)
+
+# # Call the function to create video visualization
+# create_video_visualization(cached_results, frames_dict, image_dir, class_labels, class_colors, total_frames=num_frames_per_video, output_video_path='output/visualization_output.mp4', fps=30, type='both')
