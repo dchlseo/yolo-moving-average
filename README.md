@@ -51,13 +51,13 @@ These highlights and use cases illustrate the versatility and practicality of yo
    ```
    pip install -r requirements.txt
    ```
+## Preparation
+- The video(.mov) file should be inside the data/input directory.   
 
 ## Usage
 To run the gesture classification:
 ```
-(TO BE UPDATED)
+python gesture_classifier.py
 ```
-
-
 
 This README provides a concise yet comprehensive guide to setting up and using the project. Modify it as necessary to fit the specific details and requirements of your implementation.
