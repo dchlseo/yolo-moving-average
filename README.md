@@ -60,4 +60,13 @@ To run the gesture classification:
 python gesture_classifier.py
 ```
 
+## Visualization
+- This step would involve the `inference_visualization.py` module, to:
+   - generate a graph image of the label classification (as seen in the demo)
+   - save a movie version of the visualization.
+```
+(TO BE UPDATED...))
+```
+
+
 This README provides a concise yet comprehensive guide to setting up and using the project. Modify it as necessary to fit the specific details and requirements of your implementation.
